@@ -1,0 +1,203 @@
+var bowl = createSprite(200, 390, 50, 15);
+bowl.setAnimation("Bowl");
+var tree = createSprite(200, 140);
+tree.setAnimation("Tree");
+var trophy = createSprite(200,200);
+trophy.setAnimation("flat_medal8_1");
+trophy.visible = false;
+var end = createSprite(5, 200, 10, 400);
+var endi = createSprite(395, 200, 10, 400);
+var endin = createSprite(200, 5, 400, 10);
+var ending = createSprite(200, 400, 400, 10);
+var score  = 0;
+
+trophy.scale = 2.5;
+
+var apple1 = createSprite(randomNumber(5, 190), randomNumber(5, 165));
+var apple2 = createSprite(randomNumber(5, 190), randomNumber(5, 165));
+var apple3 = createSprite(randomNumber(5, 190), randomNumber(5, 165));
+var apple4 = createSprite(randomNumber(5, 190), randomNumber(5, 165));
+var apple5 = createSprite(randomNumber(5, 190), randomNumber(5, 165));
+var apple6 = createSprite(randomNumber(395, 210), randomNumber(5, 165));
+var apple7 = createSprite(randomNumber(395, 210), randomNumber(5, 165));
+var apple8 = createSprite(randomNumber(395, 210), randomNumber(5, 165));
+var apple9 = createSprite(randomNumber(395, 210), randomNumber(5, 165));
+var apple10 = createSprite(randomNumber(395, 210), randomNumber(5, 165));
+
+function draw() {
+background("white");
+apple1.scale = 0.05;
+apple2.scale = 0.05;
+apple3.scale = 0.05;
+apple4.scale = 0.05;
+apple5.scale = 0.05;
+apple6.scale = 0.05;
+apple7.scale = 0.05;
+apple8.scale = 0.05;
+apple9.scale = 0.05;
+apple10.scale = 0.05;
+tree.width = 400;
+drawSprites();
+var time = 45 - World.seconds;
+for(var i=time;i>0;i--){
+    apple1.setVelocity(0,randomNumber(1, 20));
+    apple2.setVelocity(0,randomNumber(1, 10));
+    apple3.setVelocity(0,randomNumber(1, 10));
+    apple4.setVelocity(0,randomNumber(1, 10));
+    apple5.setVelocity(0,randomNumber(1, 10));
+    apple6.setVelocity(0,randomNumber(1, 10));
+    apple7.setVelocity(0,randomNumber(1, 10));
+    apple8.setVelocity(0,randomNumber(1, 10));
+    apple9.setVelocity(0,randomNumber(1, 10));
+    apple10.setVelocity(0,randomNumber(1, 10));
+   
+//resetting the apples to the top if it reaches the end
+
+    
+    if(apple1.isTouching(bowl)){
+    //apple1.visible = false;
+    score = score +1;
+    reset1();
+    }
+    if(apple2.isTouching(bowl)){
+    //apple2.visible = false;
+    score = score +1;
+    reset2();
+    }
+    if(apple3.isTouching(bowl)){
+    //apple3.visible = false;
+    score = score +1;
+    reset3();
+    }
+    if(apple4.isTouching(bowl)){
+    //apple4.visible = null;
+    score = score +1;
+    reset4();
+    }
+    if(apple5.isTouching(bowl)){
+    //apple5.visible = null;
+    score = score +1;
+    reset5();
+    }
+    if(apple6.isTouching(bowl)){
+    //apple6.visible = false;
+    score = score +1;
+    reset6();
+    }
+    if(apple7.isTouching(bowl)){
+    //apple7.visible = false;
+    score = score +1;
+    reset7();
+    }
+    if(apple8.isTouching(bowl)){
+    //apple8.visible = false;
+    score = score +1;
+    reset8();
+    }
+    if(apple9.isTouching(bowl)){
+    //apple9.visible = false;
+    score = score +1;
+    reset9();
+    }
+    if(apple10.isTouching(bowl)){
+    //apple10.visible = false;
+    score = score +1;
+    reset10();
+    }
+}
+
+    if(score === 100 && time>0){
+      tree.visible = false;
+      apple1.visible = false;
+      apple2.visible = false;
+      apple3.visible = false;
+      apple4.visible = false;
+      apple5.visible = false;
+      apple6.visible = false;
+      apple7.visible = false;
+      apple8.visible = false;
+      apple9.visible = false;
+      apple10.visible = false;
+      score.visible = false;
+      time.visible = false;
+      bowl.visible = false;
+      trophy.visible = true;
+    }
+
+apple1.setAnimation("sprite_whatever0.png_1");
+apple2.setAnimation("sprite_whatever0.png_1");
+apple3.setAnimation("sprite_whatever0.png_1");
+apple4.setAnimation("sprite_whatever0.png_1");
+apple5.setAnimation("sprite_whatever0.png_1");
+apple6.setAnimation("sprite_whatever0.png_1");
+apple7.setAnimation("sprite_whatever0.png_1");
+apple8.setAnimation("sprite_whatever0.png_1");
+apple9.setAnimation("sprite_whatever0.png_1");
+apple10.setAnimation("sprite_whatever0.png_1");
+
+if(keyDown("LEFT_ARROW")){
+bowl.x = bowl.x-10;
+}
+if(keyDown("RIGHT_ARROW")){
+bowl.x = bowl.x+10;
+}
+
+
+bowl.collide(end);
+bowl.collide(endi);
+
+textSize(25);
+text(score, 350, 180);
+
+if (time > 0) {
+text(time, 350, 30);
+} else {
+  textSize(50);
+text("Time's Up!", 100, 200);
+tree.visible = false;
+      apple1.visible = false;
+      apple2.visible = false;
+      apple3.visible = false;
+      apple4.visible = false;
+      apple5.visible = false;
+      apple6.visible = false;
+      apple7.visible = false;
+      apple8.visible = false;
+      apple9.visible = false;
+      apple10.visible = false;
+      score.visible = false;
+      time.visible = false;
+      bowl.visible = false;
+      
+}
+}
+function reset1(){
+apple1.y=5;
+}
+function reset2(){
+apple2.y=5;
+}
+function reset3(){
+apple3.y=5;
+}
+function reset4(){
+apple4.y=5;
+}
+function reset5(){
+apple5.y=5;
+}
+function reset6(){
+apple6.y=5;
+}
+function reset7(){
+apple7.y=5;
+}
+function reset8(){
+apple8.y=5;
+}
+function reset9(){
+apple9.y=5;
+}
+function reset10(){
+apple10.y=5;
+}
